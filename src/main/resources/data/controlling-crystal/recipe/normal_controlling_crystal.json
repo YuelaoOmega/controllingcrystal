@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "###",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "controlling-crystal:broken_controlling_crystal"
+        }
+    },
+    "result": {
+        "id": "controlling-crystal:normal_controlling_crystal",
+        "count": 1
+    }
+}

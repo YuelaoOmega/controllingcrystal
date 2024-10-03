@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        "#C#",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:coal"
+        },
+        "C": {
+            "item": "controlling-crystal:normal_controlling_crystal"
+        }
+    },
+    "result": {
+        "id": "controlling-crystal:coal_controlling_crystal",
+        "count": 1
+    }
+}

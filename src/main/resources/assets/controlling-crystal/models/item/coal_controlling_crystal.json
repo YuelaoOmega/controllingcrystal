@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "controlling-crystal:item/coal_controlling_crystal"
+  }
+}
