@@ -7,6 +7,11 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import static com.yuelao.controllingcrystal.ControllingCrystal.PlayerNames;
 
 public class CoalControllingCrystal extends Item {
     public CoalControllingCrystal(Settings settings){
@@ -15,10 +20,18 @@ public class CoalControllingCrystal extends Item {
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+        Random random = new Random();
         ItemStack itemStack = user.getStackInHand(hand);
-        if(!world.isClient){
+
+        if(world.isClient){
             return TypedActionResult.pass(itemStack);
         }
+
+        int index = random.nextInt(PlayerNames.size());
+        String LuckyPlayer = PlayerNames.get(index);
+
+
+
         itemStack.decrement(1);
         return TypedActionResult.success(itemStack);
     }
