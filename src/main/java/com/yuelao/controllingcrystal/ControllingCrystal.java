@@ -32,7 +32,7 @@ public class ControllingCrystal implements ModInitializer {
 		ModItemGroup.registerItemGroup();
 		LOGGER.info("控制水晶！");
 
-		//获取玩家名列表
+		//监听玩家加入事件，获取玩家名列表
 		PlayerJoinCallback.EVENT.register((player, server) -> {
 			boolean IsSamePlayer = false;
 			String PlayerName = player.getDisplayName().getString();

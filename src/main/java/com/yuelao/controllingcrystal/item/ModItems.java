@@ -9,6 +9,7 @@ import net.minecraft.util.Identifier;
 
 
 public class ModItems {
+    //物品注册方法
     public static Item registerItem(Item item, String id){
         Identifier itemID = Identifier.of(ControllingCrystal.MOD_ID,id);
         Item registeredItem = Registry.register(Registries.ITEM,itemID,item);
@@ -16,6 +17,7 @@ public class ModItems {
         return registeredItem;
     }
 
+    //供入口调用的初始化方法
     public static void intiialize(){
         //noting >_<
     }
