@@ -1,5 +1,6 @@
 package com.yuelao.controllingcrystal.item.custom;
 
+import net.fabricmc.api.Environment;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -23,18 +24,21 @@ public class CoalControllingCrystal extends Item {
         Random random = new Random();
         ItemStack itemStack = user.getStackInHand(hand);
 
-        if(world.isClient){
-            return TypedActionResult.pass(itemStack);
-        }
-
         int index = random.nextInt(PlayerNames.size());
         String LuckyPlayer = PlayerNames.get(index);
 
+
+        if(world.isClient){
+
+            return TypedActionResult.pass(itemStack);
+        }
 
 
         itemStack.decrement(1);
         return TypedActionResult.success(itemStack);
     }
+
+
 
 
 }

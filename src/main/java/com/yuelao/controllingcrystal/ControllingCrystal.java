@@ -7,6 +7,7 @@ import com.yuelao.controllingcrystal.item.ModItems;
 import net.fabricmc.api.ModInitializer;
 
 
+import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,9 +45,8 @@ public class ControllingCrystal implements ModInitializer {
 			if (!IsSamePlayer) {
 				PlayerNames.add(player.getDisplayName().getString());
 			}
-            for (String i:PlayerNames){
-				LOGGER.info(i);
-			}
 		});
+
+
 	}
 }
