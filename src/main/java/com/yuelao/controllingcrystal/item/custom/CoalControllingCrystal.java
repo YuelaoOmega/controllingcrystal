@@ -29,9 +29,9 @@ public class CoalControllingCrystal extends Item {
 
 
         if(world.isClient){
-
             return TypedActionResult.pass(itemStack);
         }
+
 
 
         itemStack.decrement(1);
