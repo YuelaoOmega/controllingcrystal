@@ -22,6 +22,7 @@ public class ModItems {
         //noting >_<
     }
 
+    //注册物品
     public static final Item NormalControllingCrystal = registerItem(new Item(new Item.Settings()),"normal_controlling_crystal");
     public static final Item BrokenControllingCrystal = registerItem(new Item(new Item.Settings()),"broken_controlling_crystal");
     public static final Item CoalCrystal = registerItem(new CoalControllingCrystal(new Item.Settings()), "coal_controlling_crystal");

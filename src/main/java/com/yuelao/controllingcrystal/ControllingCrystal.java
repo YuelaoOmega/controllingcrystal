@@ -4,16 +4,18 @@ import com.yuelao.controllingcrystal.event.PlayerJoinCallback;
 import com.yuelao.controllingcrystal.item.ModItemGroup;
 import com.yuelao.controllingcrystal.item.ModItems;
 
+import com.yuelao.controllingcrystal.network.CoalControllingCrystalPayload;
 import net.fabricmc.api.ModInitializer;
 
 
-import net.fabricmc.fabric.api.event.player.UseItemCallback;
-import org.apache.commons.lang3.ObjectUtils;
+import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
+import net.minecraft.entity.player.PlayerEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class ControllingCrystal implements ModInitializer {
 	public static final String MOD_ID = "controlling-crystal";
@@ -22,7 +24,7 @@ public class ControllingCrystal implements ModInitializer {
 	// It is considered best practice to use your mod id as the logger's name.
 	// That way, it's clear which mod wrote info, warnings, and errors.
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-	public static List<String> PlayerNames = new ArrayList<>();
+	public static List<UUID> Players = new ArrayList<>();
 	@Override
 	public void onInitialize() {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
@@ -32,20 +34,24 @@ public class ControllingCrystal implements ModInitializer {
 		ModItemGroup.registerItemGroup();
 		LOGGER.info("控制水晶！");
 
-		//监听玩家加入事件，获取玩家名列表
+		//监听玩家加入事件，
 		PlayerJoinCallback.EVENT.register((player, server) -> {
 			boolean IsSamePlayer = false;
-			String PlayerName = player.getDisplayName().getString();
-			for (String i:PlayerNames){
-				if (i.equals(PlayerName)){
+			UUID PlayerUUidToCompare = player.getUuid();
+			for (UUID i:Players){
+				if (i.equals(PlayerUUidToCompare)){
 					IsSamePlayer = true;
 					break;
 				}
 			}
 			if (!IsSamePlayer) {
-				PlayerNames.add(player.getDisplayName().getString());
+				Players.add(PlayerUUidToCompare);
 			}
 		});
+
+		//数据包接收_1级控制水晶
+		PayloadTypeRegistry.playS2C().register(CoalControllingCrystalPayload.ID, CoalControllingCrystalPayload.CODEC);
+
 
 
 	}
