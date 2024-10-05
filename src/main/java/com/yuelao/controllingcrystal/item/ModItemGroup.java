@@ -21,7 +21,7 @@ public class ModItemGroup {
             .displayName(Text.of("控制水晶"))
             .build();
     public static void registerItemGroup(){
-        //O.o
+        //注册物品组并添加物品
         Registry.register(Registries.ITEM_GROUP,itemgroupControllingCrystal_key,itemgroupControllingCrystal);
         ItemGroupEvents.modifyEntriesEvent(itemgroupControllingCrystal_key).register(itemgroupControllingCrystal -> {
         itemgroupControllingCrystal.add(ModItems.CoalCrystal);
